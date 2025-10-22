@@ -1,5 +1,5 @@
-function App() {
-  return <>Welcome to Circu Li-ion assesment</>;
-}
+import { HomePage } from "./pages/HomePage";
 
-export default App;
+export const App = () => {
+  return <HomePage />;
+};

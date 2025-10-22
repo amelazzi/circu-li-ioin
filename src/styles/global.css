@@ -14,6 +14,19 @@ body {
   box-sizing: border-box;
 }
 
+.section {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  padding: 16px;
+
+  h1 {
+    text-align: center;
+  }
+}
+
 .icon-container {
   max-width: 60px;
   min-width: 60px;
@@ -28,4 +41,23 @@ body {
     height: 100%;
     object-fit: contain;
   }
+}
+
+button {
+  padding: 8px 24px;
+  width: fit-content;
+  font-size: 18px;
+  border-radius: 8px;
+}
+
+.primary-button {
+  background-color: var(--primary-color);
+  border: none;
+  color: white;
+}
+
+.secondary-button {
+  background-color: white;
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
 }
