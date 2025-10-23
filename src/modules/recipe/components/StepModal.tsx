@@ -4,9 +4,12 @@ import {
   TakeImageType,
   UnscrewingType,
 } from "../../../constants/enums";
+import type { Step } from "../../../interfaces";
 import { Modal } from "../../../shared/components/modal/Modal";
 import type { Coordinates } from "../../../interfaces/coordinates";
 import { CoordInputs } from "../../step/components/CoordsInput";
+import { useRecipesContext } from "../../recipe/context/RecipesContext";
+import { validateCoords } from "../../step/utils/validation";
 
 type StepModalProps = {
   isOpen: boolean;
@@ -15,6 +18,7 @@ type StepModalProps = {
 };
 
 export const StepModal = ({ isOpen, recipeId, onClose }: StepModalProps) => {
+  const { addStepToRecipe } = useRecipesContext();
   const [selectedStepType, setSelectedStepType] = useState<StepType | "">("");
   const [selectedImageType, setSelectedImageType] = useState<
     TakeImageType | ""
@@ -41,14 +45,42 @@ export const StepModal = ({ isOpen, recipeId, onClose }: StepModalProps) => {
     setCoords((prev) => ({ ...prev, [name]: value }));
   };
 
+  const handleSave = () => {
+    let newStep: Step | null = null;
+
+    if (!validateCoords(coords)) {
+      alert("Coordinates cannot be negative");
+      return;
+    }
+
+    if (selectedStepType === StepType.TakeImage) {
+      newStep = {
+        id: Date.now(),
+        order: 0,
+        type: StepType.TakeImage,
+        pointCloud: false,
+        coords: coords,
+        takeImageType: selectedImageType || TakeImageType.FullImage,
+      };
+    }
+    if (selectedStepType === StepType.Unscrewing) {
+      newStep = {
+        id: Date.now(),
+        order: 0,
+        type: StepType.Unscrewing,
+        coords: coords,
+        unscrewingType: selectedUnscrewingType || UnscrewingType.Automatic,
+      };
+    }
+
+    if (newStep) addStepToRecipe(recipeId, newStep);
+    onClose();
+  };
+
   if (!isOpen) return null;
 
   return (
-    <Modal
-      title="Add a new step"
-      onClose={onClose}
-      onSave={() => console.log("onSave")}
-    >
+    <Modal title="Add a new step" onClose={onClose} onSave={handleSave}>
       <select
         className="select-input"
         name="step-types"

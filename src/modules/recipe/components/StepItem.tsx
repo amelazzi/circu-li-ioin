@@ -1,9 +1,5 @@
-import { StepType } from "../../../../constants/enums";
-import type {
-  Step,
-  TakeImageStep,
-  UnscrewingStep,
-} from "../../../../interfaces";
+import { StepType } from "../../../constants/enums";
+import type { Step, TakeImageStep, UnscrewingStep } from "../../../interfaces";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import "./StepItem.css";
 
