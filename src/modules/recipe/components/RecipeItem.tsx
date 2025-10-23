@@ -1,8 +1,13 @@
 import { useState } from "react";
 import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
 import "./RecipeItem.css";
+import type { Recipe } from "../../../../interfaces";
 
-export const RecipeItem = () => {
+type RecipeItemProps = {
+  recipe: Recipe;
+};
+
+export const RecipeItem = ({ recipe }: RecipeItemProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => {
@@ -11,7 +16,7 @@ export const RecipeItem = () => {
   return (
     <div className="recipe-item">
       <div className="recipe-item-header" onClick={toggle}>
-        <h3>Recipe name</h3>
+        <h3>{recipe.name}</h3>
         <div className="icon-container">
           <AddOutlinedIcon sx={{ color: "#00cfb4" }} />
         </div>
