@@ -1,7 +1,7 @@
 import { useState } from "react";
 import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
 import "./RecipeItem.css";
-import type { Recipe } from "../../../../interfaces";
+import type { Recipe } from "../../../interfaces";
 
 export const RecipeItem = ({ recipe }: { recipe: Recipe }) => {
   const [isOpen, setIsOpen] = useState(false);
