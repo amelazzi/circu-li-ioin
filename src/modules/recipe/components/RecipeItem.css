@@ -6,9 +6,15 @@
 }
 
 .recipe-item-header {
+  height: 54px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+}
+
+.recipe-name-container {
+  flex: 1;
+  display: flex;
   align-items: center;
 
   &:hover {

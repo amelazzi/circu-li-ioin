@@ -2,11 +2,7 @@ import { RecipeItem } from "./RecipeItem";
 import type { Recipe } from "../../../interfaces";
 import "./RecipeList.css";
 
-type RecipeListProps = {
-  recipes: Recipe[];
-};
-
-export const RecipeList = ({ recipes }: RecipeListProps) => {
+export const RecipeList = ({ recipes }: { recipes: Recipe[] }) => {
   return (
     <div className="recipe-list">
       {recipes.map((recipe) => (
