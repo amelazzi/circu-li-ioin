@@ -16,5 +16,18 @@ export function useRecipes() {
     );
   };
 
-  return { recipes, addRecipe, addStepToRecipe };
+  const removeStep = (recipeId: number, stepId: number) => {
+    setRecipes((prev) =>
+      prev.map((recipe) =>
+        recipe.id === recipeId
+          ? {
+              ...recipe,
+              steps: recipe.steps.filter((step) => step.id !== stepId),
+            }
+          : recipe
+      )
+    );
+  };
+
+  return { recipes, addRecipe, addStepToRecipe, removeStep };
 }

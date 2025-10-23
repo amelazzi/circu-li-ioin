@@ -29,7 +29,7 @@ export const RecipeItem = ({ recipe }: { recipe: Recipe }) => {
       {isOpen && (
         <div className="recipe-details">
           {recipe.steps.map((step) => (
-            <StepItem step={step} />
+            <StepItem key={step.id} recipeId={recipe.id} step={step} />
           ))}
         </div>
       )}
