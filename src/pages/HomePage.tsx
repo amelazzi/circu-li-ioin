@@ -2,29 +2,26 @@ import { useState } from "react";
 import { RecipeList } from "../modules/recipe/components/RecipeList";
 import "./HomePage.css";
 import { RecipeModal } from "../modules/recipe/components/RecipeModal";
-import { useRecipes } from "../modules/recipe/hooks/useRecipes";
-import { RecipesProvider } from "../modules/recipe/context/RecipesContext";
+import { useRecipesContext } from "../modules/recipe/context/RecipesContext";
 
 export const HomePage = () => {
   const [openModal, setOpenModal] = useState(false);
-  const { addRecipe } = useRecipes();
+  const { addRecipe } = useRecipesContext();
 
   return (
-    <RecipesProvider>
-      <div className="section">
-        <h1> Recipe List </h1>
-        <div className="recipes-container">
-          <RecipeList />
-          <button className="primary-button" onClick={() => setOpenModal(true)}>
-            Add Recipe
-          </button>
-        </div>
-        <RecipeModal
-          isOpen={openModal}
-          onClose={() => setOpenModal(false)}
-          onSave={addRecipe}
-        />
+    <div className="section">
+      <h1> Recipe List </h1>
+      <div className="recipes-container">
+        <RecipeList />
+        <button className="primary-button" onClick={() => setOpenModal(true)}>
+          Add Recipe
+        </button>
       </div>
-    </RecipesProvider>
+      <RecipeModal
+        isOpen={openModal}
+        onClose={() => setOpenModal(false)}
+        onSave={addRecipe}
+      />
+    </div>
   );
 };
