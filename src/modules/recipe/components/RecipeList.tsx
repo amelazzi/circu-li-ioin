@@ -1,8 +1,9 @@
 import { RecipeItem } from "./RecipeItem";
-import type { Recipe } from "../../../interfaces";
+import { useRecipesContext } from "../context/RecipesContext";
 import "./RecipeList.css";
 
-export const RecipeList = ({ recipes }: { recipes: Recipe[] }) => {
+export const RecipeList = () => {
+  const { recipes } = useRecipesContext();
   return (
     <div className="recipe-list">
       {recipes.map((recipe) => (

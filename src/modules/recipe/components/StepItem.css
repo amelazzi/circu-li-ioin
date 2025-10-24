@@ -1,0 +1,51 @@
+.step-item {
+  width: 100%;
+  padding: 8px;
+  border-bottom: 1px solid #ccc;
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+
+  .icon-container {
+    max-width: 30px;
+    min-width: 30px;
+    max-height: 30px;
+    min-height: 30px;
+  }
+}
+
+.step-header {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+}
+
+.step-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+  flex: 1;
+}
+
+.step-col {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+}
+
+.step-col.type {
+  justify-content: start;
+  font-weight: 600;
+}
+
+.step-col.coords,
+.step-col.pointcloud {
+  color: var(--gray-color);
+}
