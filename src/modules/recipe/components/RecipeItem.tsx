@@ -1,13 +1,15 @@
 import { useState } from "react";
 import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
-import "./RecipeItem.css";
-import type { Recipe } from "../../../interfaces";
-import { StepItem } from "./StepItem";
+import { StepList } from "./StepList";
 import { StepModal } from "./StepModal";
+import type { Recipe } from "../../../interfaces";
+import { useRecipesContext } from "../context/RecipesContext";
+import "./RecipeItem.css";
 
 export const RecipeItem = ({ recipe }: { recipe: Recipe }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [openAddStepModal, setOpenAddStepModal] = useState(false);
+  const { reorderSteps } = useRecipesContext();
 
   const toggle = () => {
     setIsOpen((prev) => !prev);
@@ -28,9 +30,11 @@ export const RecipeItem = ({ recipe }: { recipe: Recipe }) => {
       </div>
       {isOpen && (
         <div className="recipe-details">
-          {recipe.steps.map((step) => (
-            <StepItem key={step.id} recipeId={recipe.id} step={step} />
-          ))}
+          <StepList
+            recipeId={recipe.id}
+            steps={recipe.steps}
+            onReorder={reorderSteps}
+          />
         </div>
       )}
       <StepModal

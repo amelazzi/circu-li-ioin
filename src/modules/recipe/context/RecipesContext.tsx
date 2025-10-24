@@ -7,6 +7,7 @@ type RecipesContextType = {
   addRecipe: (recipe: Recipe) => void;
   addStepToRecipe: (recipeId: number, step: Step) => void;
   removeStep: (recipeId: number, stepId: number) => void;
+  reorderSteps: (recipeId: number, steps: Step[]) => void;
 };
 
 const RecipesContext = createContext<RecipesContextType | undefined>(undefined);
@@ -14,10 +15,11 @@ const RecipesContext = createContext<RecipesContextType | undefined>(undefined);
 export const RecipesProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const { recipes, addRecipe, addStepToRecipe, removeStep } = useRecipes();
+  const { recipes, addRecipe, addStepToRecipe, removeStep, reorderSteps } =
+    useRecipes();
   return (
     <RecipesContext.Provider
-      value={{ recipes, addRecipe, addStepToRecipe, removeStep }}
+      value={{ recipes, addRecipe, addStepToRecipe, removeStep, reorderSteps }}
     >
       {children}
     </RecipesContext.Provider>

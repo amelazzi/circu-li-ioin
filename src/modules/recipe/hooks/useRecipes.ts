@@ -8,11 +8,13 @@ export function useRecipes() {
 
   const addStepToRecipe = (recipeId: number, step: Step) => {
     setRecipes((prev) =>
-      prev.map((recipe) =>
-        recipe.id === recipeId
-          ? { ...recipe, steps: [...recipe.steps, step] }
-          : recipe
-      )
+      prev.map((r) => {
+        if (r.id === recipeId) {
+          const nextOrder = r.steps.length + 1;
+          return { ...r, steps: [...r.steps, { ...step, order: nextOrder }] };
+        }
+        return r;
+      })
     );
   };
 
@@ -29,5 +31,20 @@ export function useRecipes() {
     );
   };
 
-  return { recipes, addRecipe, addStepToRecipe, removeStep };
+  const reorderSteps = (recipeId: number, newSteps: Step[]) => {
+    setRecipes((prev) =>
+      prev.map((r) => {
+        if (r.id === recipeId) {
+          const updatedSteps = newSteps.map((step, index) => ({
+            ...step,
+            order: index + 1,
+          }));
+          return { ...r, steps: updatedSteps };
+        }
+        return r;
+      })
+    );
+  };
+
+  return { recipes, addRecipe, addStepToRecipe, removeStep, reorderSteps };
 }

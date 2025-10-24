@@ -5,19 +5,26 @@ import { useRecipesContext } from "../../recipe/context/RecipesContext";
 import DragIndicatorIcon from "@mui/icons-material/DragIndicator";
 import "./StepItem.css";
 
+type StepItemProps = {
+  step: Step;
+  recipeId: number;
+  dragHandleProps?: any;
+};
+
 export const StepItem = ({
   step,
   recipeId,
-}: {
-  step: Step;
-  recipeId: number;
-}) => {
+  dragHandleProps,
+}: StepItemProps) => {
   const { removeStep } = useRecipesContext();
 
   return (
     <div className="step-item">
       <div className="step-header">
-        <DragIndicatorIcon fontSize="small" />
+        <div {...dragHandleProps} className="icon-container drag">
+          <DragIndicatorIcon fontSize="small" />
+        </div>
+
         <div className="step-columns">
           <div className="step-col type">
             {step.type === StepType.TakeImage
