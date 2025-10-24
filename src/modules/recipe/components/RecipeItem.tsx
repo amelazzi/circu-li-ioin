@@ -30,11 +30,15 @@ export const RecipeItem = ({ recipe }: { recipe: Recipe }) => {
       </div>
       {isOpen && (
         <div className="recipe-details">
-          <StepList
-            recipeId={recipe.id}
-            steps={recipe.steps}
-            onReorder={reorderSteps}
-          />
+          {recipe.steps.length > 0 ? (
+            <StepList
+              recipeId={recipe.id}
+              steps={recipe.steps}
+              onReorder={reorderSteps}
+            />
+          ) : (
+            <div>This recipe doesn't contain steps yet </div>
+          )}
         </div>
       )}
       <StepModal

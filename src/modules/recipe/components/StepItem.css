@@ -1,7 +1,6 @@
 .step-item {
   width: 100%;
   padding: 8px;
-  border-bottom: 1px solid #ccc;
   overflow: hidden;
 
   display: flex;
@@ -9,13 +8,10 @@
   justify-content: space-between;
   align-items: center;
   background-color: white;
-
-  .icon-container {
-    max-width: 30px;
-    min-width: 30px;
-    max-height: 30px;
-    min-height: 30px;
-  }
+  border-radius: 6px;
+  padding: 8px;
+  margin-bottom: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 
 .step-header {
@@ -26,9 +22,13 @@
   gap: 16px;
 }
 
+.drag:hover {
+  cursor: grab;
+}
+
 .step-columns {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 0.6fr 1fr 0.4fr;
   gap: 10px;
   flex: 1;
 }
