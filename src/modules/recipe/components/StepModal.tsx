@@ -26,7 +26,7 @@ export const StepModal = ({ isOpen, recipeId, onClose }: StepModalProps) => {
   const [selectedUnscrewingType, setSelectedUnscrewingType] = useState<
     UnscrewingType | ""
   >("");
-  const [coords, setCoords] = useState<Coordinates>({ x: 0, y: 0 });
+  const [coords, setCoords] = useState<Coordinates>();
 
   const handleStepType = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedStepType(e.target.value as StepType);
@@ -42,13 +42,23 @@ export const StepModal = ({ isOpen, recipeId, onClose }: StepModalProps) => {
 
   const handleCoordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setCoords((prev) => ({ ...prev, [name]: value }));
+    setCoords((prev) => ({
+      x: name === "x" ? Number(value) : prev?.x ?? 0,
+      y: name === "y" ? Number(value) : prev?.y ?? 0,
+    }));
+  };
+
+  const clearForm = () => {
+    setSelectedStepType("");
+    setSelectedImageType("");
+    setSelectedUnscrewingType("");
+    setCoords(undefined);
   };
 
   const handleSave = () => {
     let newStep: Step | null = null;
 
-    if (!validateCoords(coords)) {
+    if (coords && !validateCoords(coords)) {
       alert("Coordinates cannot be negative");
       return;
     }
@@ -74,6 +84,7 @@ export const StepModal = ({ isOpen, recipeId, onClose }: StepModalProps) => {
     }
 
     if (newStep) addStepToRecipe(recipeId, newStep);
+    clearForm();
     onClose();
   };
 
