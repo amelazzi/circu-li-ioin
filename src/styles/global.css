@@ -28,11 +28,6 @@ body {
 }
 
 .icon-container {
-  max-width: 60px;
-  min-width: 60px;
-  max-height: 60px;
-  min-height: 60px;
-
   display: flex;
   align-items: center;
   justify-content: center;
