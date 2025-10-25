@@ -1,0 +1,37 @@
+{
+  "appTitle": "Circu Li-ion Assessment",
+  "darkMode": "Dark Mode",
+  "cancel": "Cancel",
+  "Save": "Save",
+  "yes": "Yes",
+  "no": "No",
+  "home": {
+    "recipeList": {
+      "title": "Recipe List",
+      "chooseFile": "Choose File",
+      "noFileChosen": "No File Chosen",
+      "addRecipe": "Add recipe"
+    },
+    "recipeItem": {
+      "emptySteps": "This recipe has no steps yet",
+      "export": "Export",
+      "newStep": "New Step"
+    },
+    "recipeModal": {
+      "title": "Add a new recipe",
+      "nameInputPlaceholder": "Recipe name"
+    },
+    "stepModal": {
+      "title": "Add a new step",
+      "selectStepType": "Select a step type",
+      "takeImage": "Take Image",
+      "unscrewing": "Unscrewing",
+      "selectImageType": "Select Image Type",
+      "fullImage": "Full",
+      "sectionImage": "Section",
+      "selectUnscrewingType": "Select Unscrewing Type",
+      "automaticUnscrewing": "Automatic",
+      "specificUnscrewing": "Specific"
+    }
+  }
+}

@@ -4,6 +4,7 @@ import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import { useRecipesContext } from "../../recipe/context/RecipesContext";
 import DragIndicatorIcon from "@mui/icons-material/DragIndicator";
 import "./StepItem.css";
+import { useTranslation } from "react-i18next";
 
 type StepItemProps = {
   step: Step;
@@ -17,6 +18,7 @@ export const StepItem = ({
   dragHandleProps,
 }: StepItemProps) => {
   const { removeStep } = useRecipesContext();
+  const { t } = useTranslation();
 
   return (
     <div className="step-item">
@@ -40,8 +42,8 @@ export const StepItem = ({
           <div className="step-col pointcloud">
             {step.type === StepType.TakeImage &&
             (step as TakeImageStep).pointCloud
-              ? "Yes"
-              : "No"}
+              ? `${t("yes")}`
+              : `${t("no")}`}
           </div>
         </div>
       </div>

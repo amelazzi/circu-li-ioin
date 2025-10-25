@@ -7,11 +7,13 @@ import type { Recipe } from "../../../interfaces";
 import { useRecipesContext } from "../context/RecipesContext";
 import "./RecipeItem.css";
 import { validateRecipe } from "../utils/validation";
+import { useTranslation } from "react-i18next";
 
 export const RecipeItem = ({ recipe }: { recipe: Recipe }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [openAddStepModal, setOpenAddStepModal] = useState(false);
   const { reorderSteps } = useRecipesContext();
+  const { t } = useTranslation();
 
   const toggle = () => {
     setIsOpen((prev) => !prev);
@@ -60,7 +62,7 @@ export const RecipeItem = ({ recipe }: { recipe: Recipe }) => {
               onReorder={reorderSteps}
             />
           ) : (
-            <div>This recipe doesn't contain steps yet </div>
+            <div>{t("home.recipeItem.emptySteps")} </div>
           )}
         </div>
       )}
