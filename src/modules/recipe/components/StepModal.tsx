@@ -10,6 +10,7 @@ import type { Coordinates } from "../../../interfaces/coordinates";
 import { CoordInputs } from "../../step/components/CoordsInput";
 import { useRecipesContext } from "../../recipe/context/RecipesContext";
 import { validateCoords } from "../../step/utils/validation";
+import { useTranslation } from "react-i18next";
 
 type StepModalProps = {
   isOpen: boolean;
@@ -27,6 +28,7 @@ export const StepModal = ({ isOpen, recipeId, onClose }: StepModalProps) => {
     UnscrewingType | ""
   >("");
   const [coords, setCoords] = useState<Coordinates>();
+  const { t } = useTranslation();
 
   const handleStepType = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedStepType(e.target.value as StepType);
@@ -91,15 +93,23 @@ export const StepModal = ({ isOpen, recipeId, onClose }: StepModalProps) => {
   if (!isOpen) return null;
 
   return (
-    <Modal title="Add a new step" onClose={onClose} onSave={handleSave}>
+    <Modal
+      title={t("home.stepModal.title")}
+      onClose={onClose}
+      onSave={handleSave}
+    >
       <select
         className="select-input"
         name="step-types"
         onChange={handleStepType}
       >
-        <option value="">Select a step type</option>
-        <option value={StepType.TakeImage}>Take Image</option>
-        <option value={StepType.Unscrewing}>Unscrewing</option>
+        <option value="">{t("home.stepModal.selectStepType")}</option>
+        <option value={StepType.TakeImage}>
+          {t("home.stepModal.takeImage")}
+        </option>
+        <option value={StepType.Unscrewing}>
+          {t("home.stepModal.unscrewing")}
+        </option>
       </select>
       {selectedStepType === StepType.TakeImage && (
         <>
@@ -108,9 +118,13 @@ export const StepModal = ({ isOpen, recipeId, onClose }: StepModalProps) => {
             name="image-types"
             onChange={handleImageType}
           >
-            <option value="">Select image type</option>
-            <option value={TakeImageType.FullImage}>Full Image</option>
-            <option value={TakeImageType.SectionImage}>Section Image</option>
+            <option value="">{t("home.stepModal.selectImageType")}</option>
+            <option value={TakeImageType.FullImage}>
+              {t("home.stepModal.fullImage")}
+            </option>
+            <option value={TakeImageType.SectionImage}>
+              {t("home.stepModal.sectionImage")}
+            </option>
           </select>
           {selectedImageType === TakeImageType.SectionImage && (
             <CoordInputs coords={coords} onChange={handleCoordChange} />
@@ -124,9 +138,13 @@ export const StepModal = ({ isOpen, recipeId, onClose }: StepModalProps) => {
             name="unscrewing-types"
             onChange={handleUnscrewingType}
           >
-            <option value="">Select unscrewing type</option>
-            <option value={UnscrewingType.Automatic}>Automatic</option>
-            <option value={UnscrewingType.Specific}>Specific</option>
+            <option value="">{t("home.stepModal.selectUnscrewingType")}</option>
+            <option value={UnscrewingType.Automatic}>
+              {t("home.stepModal.automaticUnscrewing")}
+            </option>
+            <option value={UnscrewingType.Specific}>
+              {t("home.stepModal.specificUnscrewing")}
+            </option>
           </select>
           {selectedUnscrewingType === UnscrewingType.Specific && (
             <CoordInputs coords={coords} onChange={handleCoordChange} />

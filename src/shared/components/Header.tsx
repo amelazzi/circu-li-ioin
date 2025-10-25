@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { ToggleSwitch } from "./ToggleSwitch";
 import "./header.css";
 
@@ -7,10 +8,11 @@ type HeaderProps = {
 };
 
 export const Header = ({ isDark, toggleTheme }: HeaderProps) => {
+  const { t } = useTranslation();
   return (
     <div className="header-container">
       <div>
-        <h1> Circu Li-ion assesment </h1>
+        <h1> {t("appTitle")} </h1>
       </div>
       <div>
         <ToggleSwitch

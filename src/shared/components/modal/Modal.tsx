@@ -1,5 +1,6 @@
 import type React from "react";
 import "./Modal.css";
+import { useTranslation } from "react-i18next";
 
 type ModalProps = {
   title: string;
@@ -9,6 +10,7 @@ type ModalProps = {
 };
 
 export const Modal = ({ title, onClose, onSave, children }: ModalProps) => {
+  const { t } = useTranslation();
   return (
     <div className="modal-backdrop">
       <div className="modal">
@@ -16,10 +18,10 @@ export const Modal = ({ title, onClose, onSave, children }: ModalProps) => {
         <div className="form-container">{children}</div>
         <div className="modal-buttons">
           <button className="secondary-button" onClick={onClose}>
-            Cancel
+            {t("cancel")}
           </button>
           <button className="primary-button" onClick={onSave}>
-            Save
+            {t("save")}
           </button>
         </div>
       </div>

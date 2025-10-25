@@ -1,6 +1,7 @@
 import { useState } from "react";
 import type { Recipe } from "../../../interfaces";
 import { Modal } from "../../../shared/components/modal/Modal";
+import { useTranslation } from "react-i18next";
 
 type RecipeModalProps = {
   isOpen: boolean;
@@ -10,6 +11,7 @@ type RecipeModalProps = {
 
 export const RecipeModal = ({ isOpen, onClose, onSave }: RecipeModalProps) => {
   const [name, setName] = useState("");
+  const { t } = useTranslation();
 
   if (!isOpen) return null;
 
@@ -26,10 +28,14 @@ export const RecipeModal = ({ isOpen, onClose, onSave }: RecipeModalProps) => {
   };
 
   return (
-    <Modal title="Create New Recipe" onClose={handleCancel} onSave={handleSave}>
+    <Modal
+      title={t("home.recipeModal.title")}
+      onClose={handleCancel}
+      onSave={handleSave}
+    >
       <input
         type="text"
-        placeholder="Recipe name"
+        placeholder={t("home.recipeModal.nameInputPlaceholder")}
         value={name}
         onChange={(e) => setName(e.target.value)}
         className="modal-input"
