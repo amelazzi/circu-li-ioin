@@ -1,7 +1,17 @@
+import { useState } from "react";
 import { ToggleSwitch } from "./ToggleSwitch";
 import "./header.css";
 
 export const Header = () => {
+  const [isChecked, setIsChecked] = useState(false);
+
+  const handleTheme = (checked: boolean) => {
+    setIsChecked(checked);
+    const newTheme = checked ? "dark" : "light";
+    document.documentElement.dataset.theme = newTheme;
+    localStorage.setItem("theme", newTheme);
+  };
+
   return (
     <div className="header-container">
       <div>
@@ -10,8 +20,8 @@ export const Header = () => {
       <div>
         <ToggleSwitch
           label="Dark mode"
-          checked={false}
-          onChange={() => console.log("checked")}
+          checked={isChecked}
+          onChange={handleTheme}
         />
       </div>
     </div>
