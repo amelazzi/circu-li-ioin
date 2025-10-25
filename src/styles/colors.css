@@ -1,7 +1,18 @@
 :root {
+  --background-color: #fff;
   --primary-color: #00cfb4;
   --gray-color: #787878;
   --light-color: #f9f9f9;
+  --text-color: #000;
+
   --shadow-color: rgba(0, 0, 0, 0.1);
   --shadow: 0 2px 6px var(--shadow-color);
+}
+
+[data-theme="dark"] {
+  --background-color: #3a3a3a;
+  --primary-color: #00cfb4;
+  --gray-color: #a0a0a0;
+  --light-color: #323232;
+  --text-color: #fff;
 }

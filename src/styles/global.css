@@ -1,7 +1,9 @@
 html,
 body {
+  background-color: var(--background-color);
   max-width: 100vw;
   overflow-x: hidden;
+  color: var(--text-color);
 }
 
 ::-webkit-scrollbar {

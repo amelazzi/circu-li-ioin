@@ -1,7 +1,12 @@
 import { ToggleSwitch } from "./ToggleSwitch";
 import "./header.css";
 
-export const Header = () => {
+type HeaderProps = {
+  isDark: boolean;
+  toggleTheme: () => void;
+};
+
+export const Header = ({ isDark, toggleTheme }: HeaderProps) => {
   return (
     <div className="header-container">
       <div>
@@ -10,8 +15,8 @@ export const Header = () => {
       <div>
         <ToggleSwitch
           label="Dark mode"
-          checked={false}
-          onChange={() => console.log("checked")}
+          checked={isDark}
+          onChange={toggleTheme}
         />
       </div>
     </div>
