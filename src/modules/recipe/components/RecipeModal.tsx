@@ -1,6 +1,6 @@
 import { useState } from "react";
 import type { Recipe } from "../../../interfaces";
-import { Modal } from "../../../shared/components/modal/Modal";
+import { Modal } from "../../../shared/components/Modal";
 import { useTranslation } from "react-i18next";
 
 type RecipeModalProps = {

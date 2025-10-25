@@ -5,7 +5,7 @@ import {
   UnscrewingType,
 } from "../../../constants/enums";
 import type { Step } from "../../../interfaces";
-import { Modal } from "../../../shared/components/modal/Modal";
+import { Modal } from "../../../shared/components/Modal";
 import type { Coordinates } from "../../../interfaces/coordinates";
 import { CoordInputs } from "../../step/components/CoordsInput";
 import { useRecipesContext } from "../../recipe/context/RecipesContext";
