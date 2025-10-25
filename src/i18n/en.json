@@ -32,6 +32,9 @@
       "selectUnscrewingType": "Select Unscrewing Type",
       "automaticUnscrewing": "Automatic",
       "specificUnscrewing": "Specific"
+    },
+    "stepItem": {
+      "delete": "delete"
     }
   }
 }

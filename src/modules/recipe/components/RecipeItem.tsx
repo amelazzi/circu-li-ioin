@@ -8,6 +8,7 @@ import { useRecipesContext } from "../context/RecipesContext";
 import "./RecipeItem.css";
 import { validateRecipe } from "../utils/validation";
 import { useTranslation } from "react-i18next";
+import { Tooltip } from "@mui/material";
 
 export const RecipeItem = ({ recipe }: { recipe: Recipe }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -42,15 +43,22 @@ export const RecipeItem = ({ recipe }: { recipe: Recipe }) => {
           <h3>{recipe.name}</h3>
         </div>
         <div className="recipe-icons">
-          <div className="icon-container" onClick={() => handleExport(recipe)}>
-            <FileDownloadIcon sx={{ color: "#00cfb4" }} />
-          </div>
-          <div
-            className="icon-container"
-            onClick={() => setOpenAddStepModal(true)}
-          >
-            <AddOutlinedIcon sx={{ color: "#00cfb4" }} />
-          </div>
+          <Tooltip title={t("home.recipeItem.export")} arrow>
+            <div
+              className="icon-container"
+              onClick={() => handleExport(recipe)}
+            >
+              <FileDownloadIcon sx={{ color: "#00cfb4" }} />
+            </div>
+          </Tooltip>
+          <Tooltip title={t("home.recipeItem.newStep")} arrow>
+            <div
+              className="icon-container"
+              onClick={() => setOpenAddStepModal(true)}
+            >
+              <AddOutlinedIcon sx={{ color: "#00cfb4" }} />
+            </div>
+          </Tooltip>
         </div>
       </div>
       {isOpen && (

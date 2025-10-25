@@ -5,6 +5,7 @@ import { useRecipesContext } from "../../recipe/context/RecipesContext";
 import DragIndicatorIcon from "@mui/icons-material/DragIndicator";
 import "./StepItem.css";
 import { useTranslation } from "react-i18next";
+import { Tooltip } from "@mui/material";
 
 type StepItemProps = {
   step: Step;
@@ -48,12 +49,14 @@ export const StepItem = ({
         </div>
       </div>
 
-      <div
-        className="icon-container"
-        onClick={() => removeStep(recipeId, step.id)}
-      >
-        <DeleteForeverIcon sx={{ color: "red" }} fontSize="small" />
-      </div>
+      <Tooltip title={t("home.stepItem.delete")} arrow>
+        <div
+          className="icon-container"
+          onClick={() => removeStep(recipeId, step.id)}
+        >
+          <DeleteForeverIcon sx={{ color: "red" }} fontSize="small" />
+        </div>
+      </Tooltip>
     </div>
   );
 };
