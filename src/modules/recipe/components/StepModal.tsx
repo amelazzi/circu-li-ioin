@@ -8,8 +8,8 @@ import type { Step } from "../../../interfaces";
 import { Modal } from "../../../shared/components/Modal";
 import type { Coordinates } from "../../../interfaces/coordinates";
 import { CoordInputs } from "../../step/components/CoordsInput";
-import { useRecipesContext } from "../../recipe/context/RecipesContext";
-import { validateCoords } from "../../step/utils/validation";
+import { useRecipesContext } from "../../recipe/RecipesContext";
+import { validateCoords } from "../../step/validation";
 import { useTranslation } from "react-i18next";
 
 type StepModalProps = {

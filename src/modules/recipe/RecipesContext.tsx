@@ -1,6 +1,6 @@
 import { createContext, useContext } from "react";
-import type { Recipe, Step } from "../../../interfaces";
-import { useRecipes } from "../hooks/useRecipes";
+import type { Recipe, Step } from "../../interfaces";
+import { useRecipes } from "./useRecipes";
 
 type RecipesContextType = {
   recipes: Recipe[];

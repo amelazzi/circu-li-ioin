@@ -2,7 +2,7 @@ import { useState } from "react";
 import { RecipeList } from "../modules/recipe/components/RecipeList";
 import "./HomePage.css";
 import { RecipeModal } from "../modules/recipe/components/RecipeModal";
-import { useRecipesContext } from "../modules/recipe/context/RecipesContext";
+import { useRecipesContext } from "../modules/recipe/RecipesContext";
 import { useTranslation } from "react-i18next";
 
 export const HomePage = () => {

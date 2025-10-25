@@ -4,9 +4,9 @@ import FileDownloadIcon from "@mui/icons-material/FileDownload";
 import { StepList } from "./StepList";
 import { StepModal } from "./StepModal";
 import type { Recipe } from "../../../interfaces";
-import { useRecipesContext } from "../context/RecipesContext";
+import { useRecipesContext } from "../RecipesContext";
 import "./RecipeItem.css";
-import { validateRecipe } from "../utils/validation";
+import { validateRecipe } from "../validation";
 import { useTranslation } from "react-i18next";
 import { Tooltip } from "@mui/material";
 

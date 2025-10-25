@@ -1,8 +1,8 @@
 import { RecipeItem } from "./RecipeItem";
-import { useRecipesContext } from "../context/RecipesContext";
+import { useRecipesContext } from "../RecipesContext";
 import "./RecipeList.css";
 import type { Recipe } from "../../../interfaces";
-import { validateRecipe } from "../utils/validation";
+import { validateRecipe } from "../validation";
 import { useRef } from "react";
 
 export const RecipeList = () => {

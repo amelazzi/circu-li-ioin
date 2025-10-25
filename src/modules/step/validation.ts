@@ -1,10 +1,6 @@
-import {
-  StepType,
-  TakeImageType,
-  UnscrewingType,
-} from "../../../constants/enums";
-import type { Step, TakeImageStep, UnscrewingStep } from "../../../interfaces";
-import type { Coordinates } from "../../../interfaces/coordinates";
+import { StepType, TakeImageType, UnscrewingType } from "../../constants/enums";
+import type { Step, TakeImageStep, UnscrewingStep } from "../../interfaces";
+import type { Coordinates } from "../../interfaces/coordinates";
 
 export const validateCoords = (coords: Coordinates) => {
   return coords.x >= 0 && coords.y >= 0;

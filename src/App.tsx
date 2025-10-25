@@ -1,4 +1,4 @@
-import { RecipesProvider } from "./modules/recipe/context/RecipesContext";
+import { RecipesProvider } from "./modules/recipe/RecipesContext";
 import { HomePage } from "./pages/HomePage";
 import { Header } from "./shared/components/Header";
 import { useTheme } from "./shared/hooks/useTheme";

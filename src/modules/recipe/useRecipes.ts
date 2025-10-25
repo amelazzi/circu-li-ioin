@@ -1,5 +1,5 @@
-import type { Recipe, Step } from "../../../interfaces";
-import { useLocalStorage } from "../../../shared/hooks/useLocalStorage";
+import type { Recipe, Step } from "../../interfaces";
+import { useLocalStorage } from "../../shared/hooks/useLocalStorage";
 
 export function useRecipes() {
   const [recipes, setRecipes] = useLocalStorage<Recipe[]>("recipes", []);
