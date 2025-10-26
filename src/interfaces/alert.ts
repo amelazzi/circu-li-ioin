@@ -13,3 +13,8 @@ export type AlertAction =
 export type AlertState = {
   alerts: Alert[];
 };
+
+export type ActionResult = {
+  success: boolean;
+  message: string;
+};

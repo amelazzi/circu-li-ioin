@@ -1,21 +1,35 @@
-import type { Recipe, Step } from "../../interfaces";
+import { useTranslation } from "react-i18next";
+import type { ActionResult, Recipe, Step } from "../../interfaces";
 import { useLocalStorage } from "../../shared/hooks/useLocalStorage";
 
 export function useRecipes() {
   const [recipes, setRecipes] = useLocalStorage<Recipe[]>("recipes", []);
+  const { t } = useTranslation();
 
-  const addRecipe = (recipe: Recipe) => setRecipes((prev) => [...prev, recipe]);
+  const addRecipe = (recipe: Recipe): ActionResult => {
+    try {
+      setRecipes((prev) => [...prev, recipe]);
+      return { success: true, message: `${t("home.recipeModal.successSave")}` };
+    } catch (err) {
+      return { success: false, message: "Failed to add recipe" };
+    }
+  };
 
-  const addStepToRecipe = (recipeId: number, step: Step) => {
-    setRecipes((prev) =>
-      prev.map((r) => {
-        if (r.id === recipeId) {
-          const nextOrder = r.steps.length + 1;
-          return { ...r, steps: [...r.steps, { ...step, order: nextOrder }] };
-        }
-        return r;
-      })
-    );
+  const addStepToRecipe = (recipeId: number, step: Step): ActionResult => {
+    try {
+      setRecipes((prev) =>
+        prev.map((r) => {
+          if (r.id === recipeId) {
+            const nextOrder = r.steps.length + 1;
+            return { ...r, steps: [...r.steps, { ...step, order: nextOrder }] };
+          }
+          return r;
+        })
+      );
+      return { success: true, message: "Step added successfully" };
+    } catch (err) {
+      return { success: false, message: "Failed to add step" };
+    }
   };
 
   const removeStep = (recipeId: number, stepId: number) => {

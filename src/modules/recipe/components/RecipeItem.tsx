@@ -9,12 +9,15 @@ import "./RecipeItem.css";
 import { validateRecipe } from "../validation";
 import { useTranslation } from "react-i18next";
 import { Tooltip } from "@mui/material";
+import { useAlert } from "../../alert/useAlert";
+import { AlertType } from "../../../constants/enums";
 
 export const RecipeItem = ({ recipe }: { recipe: Recipe }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [openAddStepModal, setOpenAddStepModal] = useState(false);
   const { reorderSteps } = useRecipesContext();
   const { t } = useTranslation();
+  const { showAlert } = useAlert();
 
   const toggle = () => {
     setIsOpen((prev) => !prev);
@@ -22,7 +25,7 @@ export const RecipeItem = ({ recipe }: { recipe: Recipe }) => {
 
   const handleExport = (recipe: Recipe) => {
     if (!validateRecipe(recipe)) {
-      alert("Recipe is invalid. Check all steps.");
+      showAlert(`${t("home.recipeItem.exportFailed")}`, AlertType.Error);
       return;
     }
 
