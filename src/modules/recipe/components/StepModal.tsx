@@ -1,5 +1,6 @@
 import { useState } from "react";
 import {
+  AlertType,
   StepType,
   TakeImageType,
   UnscrewingType,
@@ -11,6 +12,7 @@ import { CoordInputs } from "../../step/components/CoordsInput";
 import { useRecipesContext } from "../../recipe/RecipesContext";
 import { validateCoords } from "../../step/validation";
 import { useTranslation } from "react-i18next";
+import { useAlert } from "../../alert/useAlert";
 
 type StepModalProps = {
   isOpen: boolean;
@@ -29,6 +31,7 @@ export const StepModal = ({ isOpen, recipeId, onClose }: StepModalProps) => {
   >("");
   const [coords, setCoords] = useState<Coordinates>();
   const { t } = useTranslation();
+  const { showAlert } = useAlert();
 
   const handleStepType = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedStepType(e.target.value as StepType);
@@ -61,7 +64,7 @@ export const StepModal = ({ isOpen, recipeId, onClose }: StepModalProps) => {
     let newStep: Step | null = null;
 
     if (coords && !validateCoords(coords)) {
-      alert("Coordinates cannot be negative");
+      showAlert(`${t("home.stepModal.negativeCoords")}`, AlertType.Error);
       return;
     }
 
@@ -85,7 +88,13 @@ export const StepModal = ({ isOpen, recipeId, onClose }: StepModalProps) => {
       };
     }
 
-    if (newStep) addStepToRecipe(recipeId, newStep);
+    if (newStep) {
+      const result = addStepToRecipe(recipeId, newStep);
+      showAlert(
+        result.message,
+        result.success ? AlertType.Success : AlertType.Error
+      );
+    }
     clearForm();
     onClose();
   };

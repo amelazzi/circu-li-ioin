@@ -32,17 +32,19 @@ export function useRecipes() {
     }
   };
 
-  const removeStep = (recipeId: number, stepId: number) => {
-    setRecipes((prev) =>
-      prev.map((recipe) =>
-        recipe.id === recipeId
-          ? {
-              ...recipe,
-              steps: recipe.steps.filter((step) => step.id !== stepId),
-            }
-          : recipe
-      )
-    );
+  const removeStep = (recipeId: number, stepId: number): ActionResult => {
+    try {
+      setRecipes((prev) =>
+        prev.map((recipe) =>
+          recipe.id === recipeId
+            ? { ...recipe, steps: recipe.steps.filter((s) => s.id !== stepId) }
+            : recipe
+        )
+      );
+      return { success: true, message: "Step removed successfully" };
+    } catch (err) {
+      return { success: false, message: "Failed to remove step" };
+    }
   };
 
   const reorderSteps = (recipeId: number, newSteps: Step[]) => {

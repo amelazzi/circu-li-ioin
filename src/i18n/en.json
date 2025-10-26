@@ -38,7 +38,9 @@
       "sectionImage": "Section",
       "selectUnscrewingType": "Select Unscrewing Type",
       "automaticUnscrewing": "Automatic",
-      "specificUnscrewing": "Specific"
+      "specificUnscrewing": "Specific",
+      "negativeCoords": "Coordinates cannot be negative",
+      "successSave": "Step added successfully"
     },
     "stepItem": {
       "delete": "delete"

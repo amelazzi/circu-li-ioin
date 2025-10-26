@@ -1,4 +1,4 @@
-import { StepType } from "../../../constants/enums";
+import { AlertType, StepType } from "../../../constants/enums";
 import type { Step, TakeImageStep, UnscrewingStep } from "../../../interfaces";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import { useRecipesContext } from "../../recipe/RecipesContext";
@@ -6,6 +6,7 @@ import DragIndicatorIcon from "@mui/icons-material/DragIndicator";
 import "./StepItem.css";
 import { useTranslation } from "react-i18next";
 import { Tooltip } from "@mui/material";
+import { useAlert } from "../../alert/useAlert";
 
 type StepItemProps = {
   step: Step;
@@ -20,6 +21,15 @@ export const StepItem = ({
 }: StepItemProps) => {
   const { removeStep } = useRecipesContext();
   const { t } = useTranslation();
+  const { showAlert } = useAlert();
+
+  const handleRemoveStep = () => {
+    const result = removeStep(recipeId, step.id);
+    showAlert(
+      result.message,
+      result.success ? AlertType.Success : AlertType.Error
+    );
+  };
 
   return (
     <div className="step-item">
@@ -50,10 +60,7 @@ export const StepItem = ({
       </div>
 
       <Tooltip title={t("home.stepItem.delete")} arrow>
-        <div
-          className="icon-container"
-          onClick={() => removeStep(recipeId, step.id)}
-        >
+        <div className="icon-container" onClick={handleRemoveStep}>
           <DeleteForeverIcon sx={{ color: "red" }} fontSize="small" />
         </div>
       </Tooltip>
