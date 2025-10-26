@@ -13,6 +13,7 @@ import { useRecipesContext } from "../../recipe/RecipesContext";
 import { validateCoords } from "../../step/validation";
 import { useTranslation } from "react-i18next";
 import { useAlert } from "../../alert/useAlert";
+import { ToggleSwitch } from "../../../shared/components/ToggleSwitch";
 
 type StepModalProps = {
   isOpen: boolean;
@@ -26,6 +27,7 @@ export const StepModal = ({ isOpen, recipeId, onClose }: StepModalProps) => {
   const [selectedImageType, setSelectedImageType] = useState<
     TakeImageType | ""
   >("");
+  const [includePointcloud, setIncludePointcloud] = useState(false);
   const [selectedUnscrewingType, setSelectedUnscrewingType] = useState<
     UnscrewingType | ""
   >("");
@@ -72,6 +74,7 @@ export const StepModal = ({ isOpen, recipeId, onClose }: StepModalProps) => {
       newStep = {
         id: Date.now(),
         order: 0,
+        includePointcloud: includePointcloud,
         type: StepType.TakeImage,
         pointCloud: false,
         coords: coords,
@@ -122,6 +125,12 @@ export const StepModal = ({ isOpen, recipeId, onClose }: StepModalProps) => {
       </select>
       {selectedStepType === StepType.TakeImage && (
         <>
+          <ToggleSwitch
+            label={t("home.stepModal.includePointcloud")}
+            checked={includePointcloud}
+            onChange={() => setIncludePointcloud((prev) => !prev)}
+            position="right"
+          />
           <select
             className="select-input"
             name="image-types"

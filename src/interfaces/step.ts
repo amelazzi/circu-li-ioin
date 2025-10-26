@@ -8,6 +8,7 @@ import type { Coordinates } from "./coordinates";
 export type TakeImageStep = {
   id: number;
   order: number;
+  includePointcloud: boolean;
   type: typeof StepType.TakeImage;
   pointCloud: boolean;
   takeImageType: TakeImageType;

@@ -52,7 +52,7 @@ export const StepItem = ({
           </div>
           <div className="step-col pointcloud">
             {step.type === StepType.TakeImage &&
-            (step as TakeImageStep).pointCloud
+            (step as TakeImageStep).includePointcloud
               ? `${t("yes")}`
               : `${t("no")}`}
           </div>

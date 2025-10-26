@@ -31,6 +31,7 @@
     "stepModal": {
       "title": "Add a new step",
       "selectStepType": "Select a step type",
+      "includePointcloud": "include PointCloud",
       "takeImage": "Take Image",
       "unscrewing": "Unscrewing",
       "selectImageType": "Select Image Type",
