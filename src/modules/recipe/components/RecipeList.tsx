@@ -4,10 +4,15 @@ import "./RecipeList.css";
 import type { Recipe } from "../../../interfaces";
 import { validateRecipe } from "../validation";
 import { useRef } from "react";
+import { useAlert } from "../../alert/useAlert";
+import { AlertType } from "../../../constants/enums";
+import { useTranslation } from "react-i18next";
 
 export const RecipeList = () => {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const { recipes, addRecipe } = useRecipesContext();
+  const { showAlert } = useAlert();
+  const { t } = useTranslation();
 
   const recipeExists = (recipe: Recipe, recipes: Recipe[]) => {
     const duplicateId = recipes.some((r) => r.id === recipe.id && r !== recipe);
@@ -24,18 +29,22 @@ export const RecipeList = () => {
         const recipe: Recipe = JSON.parse(event.target?.result as string);
 
         if (!validateRecipe(recipe)) {
-          alert("Imported recipe is invalid.");
+          showAlert(
+            `${t("home.recipeList.invalidImportedRecipe")}`,
+            AlertType.Error
+          );
           return;
         }
 
         if (recipeExists(recipe, recipes)) {
-          alert("A recipe with same id already exists.");
+          showAlert(`${t("home.recipeList.existingRecipe")}`, AlertType.Error);
           return;
         }
 
         addRecipe(recipe);
+        showAlert(`${t("home.recipeList.importSuccess")}`, AlertType.Success);
       } catch (err) {
-        alert("Failed to parse JSON");
+        showAlert(`${t("home.recipeList.parseJsonFailed")}`, AlertType.Error);
       }
     };
     reader.readAsText(file);

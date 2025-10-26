@@ -1,12 +1,12 @@
 import { createContext, useContext } from "react";
-import type { Recipe, Step } from "../../interfaces";
+import type { ActionResult, Recipe, Step } from "../../interfaces";
 import { useRecipes } from "./useRecipes";
 
 type RecipesContextType = {
   recipes: Recipe[];
-  addRecipe: (recipe: Recipe) => void;
-  addStepToRecipe: (recipeId: number, step: Step) => void;
-  removeStep: (recipeId: number, stepId: number) => void;
+  addRecipe: (recipe: Recipe) => ActionResult;
+  addStepToRecipe: (recipeId: number, step: Step) => ActionResult;
+  removeStep: (recipeId: number, stepId: number) => ActionResult;
   reorderSteps: (recipeId: number, steps: Step[]) => void;
 };
 

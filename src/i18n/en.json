@@ -10,16 +10,23 @@
       "title": "Recipe List",
       "chooseFile": "Choose File",
       "noFileChosen": "No File Chosen",
-      "addRecipe": "Add recipe"
+      "addRecipe": "Add recipe",
+      "invalidImportedRecipe": "Imported recipe is invalid.",
+      "existingRecipe": "A recipe with same id already exists.",
+      "importSuccess": "Recipe imported successfully",
+      "parseJsonFailed": "Failed to parse JSON"
     },
     "recipeItem": {
       "emptySteps": "This recipe has no steps yet",
       "export": "Export",
-      "newStep": "New Step"
+      "newStep": "New Step",
+      "exportFailed": "Recipe is invalid. Check all steps"
     },
     "recipeModal": {
       "title": "Add a new recipe",
-      "nameInputPlaceholder": "Recipe name"
+      "nameInputPlaceholder": "Recipe name",
+      "successSave": "Recipe added successfully",
+      "emptyRecipeNameError": "Recipe name cannot be empty"
     },
     "stepModal": {
       "title": "Add a new step",
@@ -31,7 +38,9 @@
       "sectionImage": "Section",
       "selectUnscrewingType": "Select Unscrewing Type",
       "automaticUnscrewing": "Automatic",
-      "specificUnscrewing": "Specific"
+      "specificUnscrewing": "Specific",
+      "negativeCoords": "Coordinates cannot be negative",
+      "successSave": "Step added successfully"
     },
     "stepItem": {
       "delete": "delete"

@@ -16,3 +16,18 @@ export const UnscrewingType = {
 } as const;
 export type UnscrewingType =
   (typeof UnscrewingType)[keyof typeof UnscrewingType];
+
+export const AlertType = {
+  Success: "success",
+  Error: "error",
+  Info: "info",
+  Warning: "warning",
+} as const;
+export type AlertType = (typeof AlertType)[keyof typeof AlertType];
+
+export const AlertActionType = {
+  Add: "ADD_ALERT",
+  Remove: "REMOVE_ALERT",
+} as const;
+export type AlertActionType =
+  (typeof AlertActionType)[keyof typeof AlertActionType];
