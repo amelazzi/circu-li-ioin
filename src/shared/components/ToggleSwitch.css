@@ -4,6 +4,6 @@
   align-items: center;
   gap: 8px;
   label {
-    color: white;
+    font-size: 18px;
   }
 }
